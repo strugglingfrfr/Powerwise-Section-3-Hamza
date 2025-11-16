@@ -11,6 +11,13 @@ package Brian;
 public class TipGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TipGUI.class.getName());
+    
+    /**
+    * CardLayout and Panels
+    */
+    private java.awt.CardLayout cardLayout;
+    private javax.swing.JPanel dashboardPanel;
+    private javax.swing.JPanel addTipPanel;
 
     /**
      * Creates new form TipGUI
@@ -30,29 +37,110 @@ public class TipGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        /**
+        * CardLayout for swapping between two forms
+        */
+        cardLayout = new java.awt.CardLayout();
+        getContentPane().setLayout(cardLayout);
+
+        /**
+        * TIPS DASHBOARD
+        */
+        dashboardPanel = new javax.swing.JPanel(new java.awt.BorderLayout());
+
+        javax.swing.JLabel lblDashboard = new javax.swing.JLabel("💡 Green Tips Dashboard", javax.swing.SwingConstants.CENTER);
+        lblDashboard.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 20));
+        dashboardPanel.add(lblDashboard, java.awt.BorderLayout.NORTH);
+
+        javax.swing.JTextArea txtTips = new javax.swing.JTextArea();
+        txtTips.setText("""
+                • Turn off unused lights
+                • Reduce water heating
+                • Use LED lighting
+                • Unplug chargers after use
+                """);
+        txtTips.setEditable(false);
+
+        dashboardPanel.add(new javax.swing.JScrollPane(txtTips), java.awt.BorderLayout.CENTER);
+
+        javax.swing.JPanel dashboardButtons = new javax.swing.JPanel();
+        javax.swing.JButton btnAdopt = new javax.swing.JButton("Mark as Adopted");
+        javax.swing.JButton btnAddTip = new javax.swing.JButton("Add New Tip");
+        javax.swing.JButton btnBack = new javax.swing.JButton("Back to Menu");
+
+        dashboardButtons.add(btnAdopt);
+        dashboardButtons.add(btnAddTip);
+        dashboardButtons.add(btnBack);
+
+        dashboardPanel.add(dashboardButtons, java.awt.BorderLayout.SOUTH);
+
+        /**
+        *ADD TIP FORM
+        */
+        addTipPanel = new javax.swing.JPanel(new java.awt.GridBagLayout());
+        java.awt.GridBagConstraints gbc = new java.awt.GridBagConstraints();
+        gbc.insets = new java.awt.Insets(10, 10, 10, 10);
+
+        javax.swing.JLabel lblAddTip = new javax.swing.JLabel("🌱 Add New Tip");
+        lblAddTip.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 20));
+
+        javax.swing.JLabel lblDescription = new javax.swing.JLabel("Tip Description:");
+        javax.swing.JTextField txtDescription = new javax.swing.JTextField(20);
+
+        javax.swing.JCheckBox chkAdopted = new javax.swing.JCheckBox("Adopted?");
+        javax.swing.JButton btnSave = new javax.swing.JButton("Save");
+        javax.swing.JButton btnCancel = new javax.swing.JButton("Cancel");
+
+        gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
+        addTipPanel.add(lblAddTip, gbc);
+
+        gbc.gridwidth = 1; gbc.gridy = 1; gbc.gridx = 0;
+        addTipPanel.add(lblDescription, gbc);
+
+        gbc.gridx = 1;
+        addTipPanel.add(txtDescription, gbc);
+
+        gbc.gridy = 2; gbc.gridx = 1;
+        addTipPanel.add(chkAdopted, gbc);
+
+        gbc.gridy = 3; gbc.gridx = 0;
+        addTipPanel.add(btnSave, gbc);
+
+        gbc.gridx = 1;
+        addTipPanel.add(btnCancel, gbc);
+
+        /**
+        * ADD BOTH PANELS TO THE FRAME
+        */
+        getContentPane().add(dashboardPanel, "dashboard");
+        getContentPane().add(addTipPanel, "addtip");
+
+        /*
+        * BUTTON ACTIONS (Navigation)
+        */
+        btnAddTip.addActionListener(e -> cardLayout.show(getContentPane(), "addtip"));
+
+        btnCancel.addActionListener(e -> cardLayout.show(getContentPane(), "dashboard"));
+
+        btnSave.addActionListener(e -> {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Tip saved (demo).");
+            cardLayout.show(getContentPane(), "dashboard");
+        });
+
+        btnBack.addActionListener(e -> {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Returning to menu...");
+        });
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }/* </editor-fold>//GEN-END:initComponents */
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -63,12 +151,13 @@ public class TipGUI extends javax.swing.JFrame {
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new TipGUI().setVisible(true));
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
+    /** Variables declaration - do not modify//GEN-BEGIN:variables
+    * End of variables declaration//GEN-END:variables
+    */
 }
+

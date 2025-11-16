@@ -4,6 +4,7 @@
  */
 package Odmaa;
 
+import power.wise.app.PowerWiseGUI;
 /**
  *
  * @author apple
@@ -28,21 +29,126 @@ public class ApplianceGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        headerPanel = new javax.swing.JPanel();
+        applianceLBL = new javax.swing.JLabel();
+        mainPanel = new javax.swing.JPanel();
+        mainMenuBTN = new javax.swing.JButton();
+        applianceListBTN = new javax.swing.JButton();
+        iconLBL = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        headerPanel.setBackground(new java.awt.Color(26, 101, 26));
+
+        applianceLBL.setBackground(new java.awt.Color(26, 101, 26));
+        applianceLBL.setFont(new java.awt.Font("Futura", 0, 24)); // NOI18N
+        applianceLBL.setForeground(new java.awt.Color(255, 255, 255));
+        applianceLBL.setText("Power Wise - Appliance");
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(applianceLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addContainerGap(7, Short.MAX_VALUE)
+                .addComponent(applianceLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        mainPanel.setToolTipText("");
+
+        mainMenuBTN.setBackground(new java.awt.Color(26, 101, 26));
+        mainMenuBTN.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        mainMenuBTN.setForeground(new java.awt.Color(255, 255, 255));
+        mainMenuBTN.setText("Main Menu");
+        mainMenuBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuBTNActionPerformed(evt);
+            }
+        });
+
+        applianceListBTN.setBackground(new java.awt.Color(26, 101, 26));
+        applianceListBTN.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        applianceListBTN.setForeground(new java.awt.Color(255, 255, 255));
+        applianceListBTN.setText("Appliance List");
+        applianceListBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applianceListBTNActionPerformed(evt);
+            }
+        });
+
+        iconLBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/electric-appliance.png"))); // NOI18N
+        iconLBL.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(531, Short.MAX_VALUE)
+                .addComponent(iconLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(373, 373, 373))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(applianceListBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
+                .addComponent(mainMenuBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(iconLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(applianceListBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mainMenuBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 83, Short.MAX_VALUE))
+                    .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mainMenuBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuBTNActionPerformed
+        // TODO add your handling code here:
+        new PowerWiseGUI().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mainMenuBTNActionPerformed
+
+    private void applianceListBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applianceListBTNActionPerformed
+        // TODO add your handling code here:
+        new ApplianceListForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_applianceListBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +176,11 @@ public class ApplianceGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel applianceLBL;
+    private javax.swing.JButton applianceListBTN;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel iconLBL;
+    private javax.swing.JButton mainMenuBTN;
+    private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 }
