@@ -4,6 +4,8 @@
  */
 package Hamza;
 
+import power.wise.app.PowerWiseGUI;
+
 /**
  *
  * @author apple
@@ -13,7 +15,7 @@ public class ViewReportForm extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewReportForm.class.getName());
 
     /**
-     * Creates new form ViewReportForm
+     * Creates new form ReportGUI
      */
     public ViewReportForm() {
         initComponents();
@@ -28,21 +30,121 @@ public class ViewReportForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        headerPanel = new javax.swing.JPanel();
+        headingLabel = new javax.swing.JLabel();
+        MainPanel = new javax.swing.JPanel();
+        lblReportTitle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtReportSummary = new javax.swing.JTextArea();
+        lblChartPlaceholder = new javax.swing.JLabel();
+        Icon1 = new javax.swing.JLabel();
+        btnSaveReport = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        backgroundLabel = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        headerPanel.setBackground(new java.awt.Color(26, 101, 26));
+
+        headingLabel.setFont(new java.awt.Font("Futura", 0, 22)); // NOI18N
+        headingLabel.setForeground(new java.awt.Color(255, 255, 255));
+        headingLabel.setText("PowerWise – View Reports & Stats");
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(headingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblReportTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblReportTitle.setText("Sample Energy Usage Report");
+        lblReportTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        MainPanel.add(lblReportTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 50));
+
+        txtReportSummary.setColumns(20);
+        txtReportSummary.setLineWrap(true);
+        txtReportSummary.setRows(5);
+        txtReportSummary.setText("This is a sample report summary...");
+        txtReportSummary.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(txtReportSummary);
+
+        MainPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, 210));
+
+        lblChartPlaceholder.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        lblChartPlaceholder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblChartPlaceholder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/Chart.png"))); // NOI18N
+        lblChartPlaceholder.setText("Chart Placeholder");
+        lblChartPlaceholder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        MainPanel.add(lblChartPlaceholder, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 300, 210));
+
+        Icon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/viewReport.png"))); // NOI18N
+        MainPanel.add(Icon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, -1));
+
+        btnSaveReport.setBackground(new java.awt.Color(26, 101, 26));
+        btnSaveReport.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        btnSaveReport.setForeground(new java.awt.Color(242, 242, 242));
+        btnSaveReport.setText("Save Report");
+        btnSaveReport.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnSaveReport.setBorderPainted(false);
+        btnSaveReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveReportActionPerformed(evt);
+            }
+        });
+        MainPanel.add(btnSaveReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 170, 70));
+
+        btnBack.setBackground(new java.awt.Color(26, 101, 26));
+        btnBack.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(242, 242, 242));
+        btnBack.setText("Back");
+        btnBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        MainPanel.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 170, 70));
+
+        backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/ReportsBackground.jpg"))); // NOI18N
+        MainPanel.add(backgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 750, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        new ReportGUI().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSaveReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveReportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveReportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -65,10 +167,21 @@ public class ViewReportForm extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and dibtnMainMenuform */
         java.awt.EventQueue.invokeLater(() -> new ViewReportForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Icon1;
+    private javax.swing.JPanel MainPanel;
+    private javax.swing.JLabel backgroundLabel;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSaveReport;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel headingLabel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblChartPlaceholder;
+    private javax.swing.JLabel lblReportTitle;
+    private javax.swing.JTextArea txtReportSummary;
     // End of variables declaration//GEN-END:variables
 }

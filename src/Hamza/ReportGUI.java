@@ -66,6 +66,7 @@ public class ReportGUI extends javax.swing.JFrame {
         btnMainMenu.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btnMainMenu.setForeground(new java.awt.Color(242, 242, 242));
         btnMainMenu.setText("Main Menu");
+        btnMainMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainMenuActionPerformed(evt);
@@ -80,6 +81,7 @@ public class ReportGUI extends javax.swing.JFrame {
         btn1stform.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btn1stform.setForeground(new java.awt.Color(242, 242, 242));
         btn1stform.setText("Reports Menu");
+        btn1stform.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btn1stform.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1stformActionPerformed(evt);

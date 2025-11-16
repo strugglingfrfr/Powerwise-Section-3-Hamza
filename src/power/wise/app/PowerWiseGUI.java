@@ -70,6 +70,7 @@ public class PowerWiseGUI extends javax.swing.JFrame {
         btnTips.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btnTips.setForeground(new java.awt.Color(242, 242, 242));
         btnTips.setText("Green Tips");
+        btnTips.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnTips.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTipsActionPerformed(evt);
@@ -80,6 +81,7 @@ public class PowerWiseGUI extends javax.swing.JFrame {
         btnReports.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btnReports.setForeground(new java.awt.Color(242, 242, 242));
         btnReports.setText("Reports");
+        btnReports.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnReports.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportsActionPerformed(evt);
@@ -90,6 +92,7 @@ public class PowerWiseGUI extends javax.swing.JFrame {
         btnEnergy.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btnEnergy.setForeground(new java.awt.Color(242, 242, 242));
         btnEnergy.setText("Energy Usage");
+        btnEnergy.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnEnergy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnergyActionPerformed(evt);
