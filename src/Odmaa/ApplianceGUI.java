@@ -8,14 +8,14 @@ package Odmaa;
  *
  * @author apple
  */
-public class ApplaiceGUI extends javax.swing.JFrame {
+public class ApplianceGUI extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ApplaiceGUI.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ApplianceGUI.class.getName());
 
     /**
      * Creates new form ApplaiceGUI
      */
-    public ApplaiceGUI() {
+    public ApplianceGUI() {
         initComponents();
     }
 
@@ -66,7 +66,7 @@ public class ApplaiceGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ApplaiceGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ApplianceGUI().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

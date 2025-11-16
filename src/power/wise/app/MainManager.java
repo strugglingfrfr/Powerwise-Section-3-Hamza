@@ -8,6 +8,6 @@ package power.wise.app;
  *
  * @author apple
  */
-public class ManiManager {
+public class MainManager {
     
 }

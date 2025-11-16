@@ -15,6 +15,10 @@ public class SmartEnergyApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //starting the app
+        java.awt.EventQueue.invokeLater(() -> {
+            new PowerWiseGUI().setVisible(true);
+        });
     }
     
 }
