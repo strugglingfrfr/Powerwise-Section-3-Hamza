@@ -3,24 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/power/wise/app/SmartEnergyApp.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/power/wise/app/ManiManager.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/power/wise/app/Savable.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Odmaa/ApplianceManager.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Odmaa/Appliance.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Odmaa/ApplaiceGUI.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Odmaa/ApplianceListForm.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Odmaa/AddApplianceForm.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Brian/TipManager.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Brian/Tip.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Brian/TipGUI.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Brian/TipDashboardForm.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Brian/AddTipForm.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Hamza/ReportManager.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Hamza/Report.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Hamza/ReportGUI.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Hamza/ReportsMenuForm.java</file>
-            <file>file:/Users/apple/NetBeansProjects/Power-Wise-App/src/Hamza/ViewReportForm.java</file>
+            <file>file:/Users/muhammadhamzaanjum/Documents/PowerWise-Java-OOP-Project%20copy/src/Hamza/ReportGUI.java</file>
+            <file>file:/Users/muhammadhamzaanjum/Documents/PowerWise-Java-OOP-Project%20copy/src/Hamza/ReportsMenuForm.java</file>
+            <file>file:/Users/muhammadhamzaanjum/Documents/PowerWise-Java-OOP-Project%20copy/src/Hamza/ViewReportForm.java</file>
         </group>
     </open-files>
 </project-private>

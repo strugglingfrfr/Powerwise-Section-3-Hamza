@@ -4,7 +4,6 @@
  */
 package Hamza;
 
-import power.wise.app.PowerWiseGUI;
 
 /**
  *
@@ -118,8 +117,8 @@ public class ReportGUI extends javax.swing.JFrame {
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
-        new PowerWiseGUI().setVisible(true);
-        this.dispose();
+       new ReportGUI().setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
     /**
