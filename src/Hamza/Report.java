@@ -186,7 +186,7 @@ public class Report {
 
     //Final report formmating and output
     return
-        "PowerWise Energy Report\n\n" +
+        "PowerWise Energy Report\n" +
 
         "Appliance: " + applianceName + "\n\n" +
 

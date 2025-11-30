@@ -21,7 +21,9 @@ public class ViewReportForm extends javax.swing.JFrame {
      */
     public ViewReportForm() {
         initComponents();
+        txtReportSummary.setEditable(false);
     }
+    
     
     // Overloaded constructor that receives a Report object
     public ViewReportForm(Report report) {
@@ -80,12 +82,12 @@ public class ViewReportForm extends javax.swing.JFrame {
         lblReportTitle.setText("Energy Usage Report");
         MainPanel.add(lblReportTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 260, 50));
 
+        txtReportSummary.setEditable(false);
         txtReportSummary.setColumns(20);
         txtReportSummary.setLineWrap(true);
         txtReportSummary.setRows(5);
         txtReportSummary.setText("This is a sample report summary...");
         txtReportSummary.setWrapStyleWord(true);
-        txtReportSummary.setBorder(null);
         jScrollPane1.setViewportView(txtReportSummary);
 
         MainPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, 210));
