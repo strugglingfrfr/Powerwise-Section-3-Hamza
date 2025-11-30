@@ -4,21 +4,39 @@
  */
 package Hamza;
 
-
-
 /**
  *
  * @author apple
  */
 public class ReportsMenuForm extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ReportsMenuForm.class.getName());
+    // Manager objects for loading appliances and generating reports
+    private Dependancy.ApplianceManager applianceManager = new Dependancy.ApplianceManager();
+    private ReportManager reportManager = new ReportManager();
+
+    // A place to store the last generated report
+    private Report currentReport;
 
     /**
      * Creates new form ReportGUI
      */
     public ReportsMenuForm() {
         initComponents();
+        loadAppliancesIntoDropdown();
+        btnViewReport.setVisible(false); // hide view button initially
+    }
+
+    // Loads appliance names from the manager into the combo box
+    private void loadAppliancesIntoDropdown() {
+        cmbAppliance.removeAllItems();
+        cmbAppliance.addItem("Choose appliance…");
+
+        java.util.ArrayList<Dependancy.Appliance> list = applianceManager.loadAppliances();
+
+        for (Dependancy.Appliance a : list) {
+            cmbAppliance.addItem(a.getName());
+        }
     }
 
     /**
@@ -35,11 +53,11 @@ public class ReportsMenuForm extends javax.swing.JFrame {
         MainPanel = new javax.swing.JPanel();
         lblSelector = new javax.swing.JLabel();
         cmbAppliance = new javax.swing.JComboBox<>();
-        btnBack = new javax.swing.JButton();
+        btnViewReport = new javax.swing.JButton();
         btnGenerateReport1 = new javax.swing.JButton();
-        lblStatus = new javax.swing.JLabel();
         lblback = new javax.swing.JLabel();
         Icon1 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
         backgroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,7 +91,7 @@ public class ReportsMenuForm extends javax.swing.JFrame {
         MainPanel.add(lblSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 110, 30));
 
         cmbAppliance.setForeground(new java.awt.Color(26, 101, 26));
-        cmbAppliance.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose appliance…", "Washing Machine", "Heater", "Laptop", "Fridge" }));
+        cmbAppliance.setModel(new javax.swing.DefaultComboBoxModel<>());
         cmbAppliance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbApplianceActionPerformed(evt);
@@ -81,23 +99,23 @@ public class ReportsMenuForm extends javax.swing.JFrame {
         });
         MainPanel.add(cmbAppliance, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, 30));
 
-        btnBack.setBackground(new java.awt.Color(26, 101, 26));
-        btnBack.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        btnBack.setForeground(new java.awt.Color(242, 242, 242));
-        btnBack.setText("Back");
-        btnBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnViewReport.setBackground(new java.awt.Color(26, 101, 26));
+        btnViewReport.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        btnViewReport.setForeground(new java.awt.Color(242, 242, 242));
+        btnViewReport.setText("View Report");
+        btnViewReport.setBorder(null);
+        btnViewReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnViewReportActionPerformed(evt);
             }
         });
-        MainPanel.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 170, 70));
+        MainPanel.add(btnViewReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 170, 70));
 
         btnGenerateReport1.setBackground(new java.awt.Color(26, 101, 26));
         btnGenerateReport1.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btnGenerateReport1.setForeground(new java.awt.Color(242, 242, 242));
         btnGenerateReport1.setText("Generate Report");
-        btnGenerateReport1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnGenerateReport1.setBorder(null);
         btnGenerateReport1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerateReport1ActionPerformed(evt);
@@ -105,18 +123,25 @@ public class ReportsMenuForm extends javax.swing.JFrame {
         });
         MainPanel.add(btnGenerateReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 170, 70));
 
-        lblStatus.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lblStatus.setText("       Report Generated");
-        lblStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        MainPanel.add(lblStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 220, 60));
-
         lblback.setBackground(new java.awt.Color(26, 101, 26));
-        lblback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblback.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         lblback.setOpaque(true);
         MainPanel.add(lblback, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 330, 50));
 
         Icon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/reportGenerate.png"))); // NOI18N
         MainPanel.add(Icon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, -1));
+
+        btnBack1.setBackground(new java.awt.Color(26, 101, 26));
+        btnBack1.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        btnBack1.setForeground(new java.awt.Color(242, 242, 242));
+        btnBack1.setText("Back");
+        btnBack1.setBorder(null);
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        MainPanel.add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 170, 70));
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/ReportsBackground.jpg"))); // NOI18N
         MainPanel.add(backgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 750, 420));
@@ -143,19 +168,54 @@ public class ReportsMenuForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbApplianceActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    private void btnViewReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewReportActionPerformed
         // TODO add your handling code here:
-        new ReportGUI().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnBackActionPerformed
+       ViewReportForm v = new ViewReportForm(currentReport);
+       v.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnViewReportActionPerformed
 
     private void btnGenerateReport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateReport1ActionPerformed
-        // TODO add your handling code here:
-        new ViewReportForm().setVisible(true);
-        this.dispose();
+       
+        // Open ViewReportForm and pass the report
+        String selected = cmbAppliance.getSelectedItem().toString();
+
+        // Load appliances
+        java.util.ArrayList<Dependancy.Appliance> list = applianceManager.loadAppliances();
+        Dependancy.Appliance chosenAppliance = null;
+
+        for (Dependancy.Appliance a : list) {
+            if (a.getName().equals(selected)) {
+                chosenAppliance = a;
+                break;
+            }
+        }
+
+        // Safety check
+        if (chosenAppliance == null) {
+            System.out.println("Error: appliance not found.");
+            return;
+        }
+
+        // Generate report
+        currentReport = reportManager.generateReport(chosenAppliance);
+
+        // Save (optional)
+        reportManager.saveReport(currentReport);
+
+        // ? Show the View button
+        btnViewReport.setVisible(true);
+
+
     }//GEN-LAST:event_btnGenerateReport1ActionPerformed
 
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
     /**
+     * Å
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -184,13 +244,13 @@ public class ReportsMenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel Icon1;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel backgroundLabel;
-    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnGenerateReport1;
+    private javax.swing.JButton btnViewReport;
     private javax.swing.JComboBox<String> cmbAppliance;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel headingLabel;
     private javax.swing.JLabel lblSelector;
-    private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblback;
     // End of variables declaration//GEN-END:variables
 }

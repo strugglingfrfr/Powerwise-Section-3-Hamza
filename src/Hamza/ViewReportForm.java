@@ -13,14 +13,23 @@ package Hamza;
 public class ViewReportForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewReportForm.class.getName());
-
+    // Stores the report passed from ReportsMenuForm
+    private Report currentReport;
+    
     /**
      * Creates new form ReportGUI
      */
     public ViewReportForm() {
         initComponents();
     }
-
+    
+    // Overloaded constructor that receives a Report object
+    public ViewReportForm(Report report) {
+        this();                 // calls initComponents()
+        this.currentReport = report;
+        displayReportDetails(); // fills the text area with report text
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,7 +45,7 @@ public class ViewReportForm extends javax.swing.JFrame {
         lblReportTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtReportSummary = new javax.swing.JTextArea();
-        lblChartPlaceholder = new javax.swing.JLabel();
+        chartPanelContainer = new javax.swing.JLabel();
         Icon1 = new javax.swing.JLabel();
         btnSaveReport = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
@@ -66,35 +75,34 @@ public class ViewReportForm extends javax.swing.JFrame {
 
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblReportTitle.setBackground(new java.awt.Color(255, 255, 255));
         lblReportTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lblReportTitle.setText("Sample Energy Usage Report");
-        lblReportTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        MainPanel.add(lblReportTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 50));
+        lblReportTitle.setText("Energy Usage Report");
+        MainPanel.add(lblReportTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 260, 50));
 
         txtReportSummary.setColumns(20);
         txtReportSummary.setLineWrap(true);
         txtReportSummary.setRows(5);
         txtReportSummary.setText("This is a sample report summary...");
         txtReportSummary.setWrapStyleWord(true);
+        txtReportSummary.setBorder(null);
         jScrollPane1.setViewportView(txtReportSummary);
 
         MainPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, 210));
 
-        lblChartPlaceholder.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
-        lblChartPlaceholder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblChartPlaceholder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/Chart.png"))); // NOI18N
-        lblChartPlaceholder.setText("Chart Placeholder");
-        lblChartPlaceholder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        MainPanel.add(lblChartPlaceholder, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 300, 210));
+        chartPanelContainer.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        chartPanelContainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        chartPanelContainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/energyrating.png"))); // NOI18N
+        MainPanel.add(chartPanelContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 310, 210));
 
         Icon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/power/wise/app/icons/viewReport.png"))); // NOI18N
-        MainPanel.add(Icon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, -1));
+        MainPanel.add(Icon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, -1, -1));
 
         btnSaveReport.setBackground(new java.awt.Color(26, 101, 26));
         btnSaveReport.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btnSaveReport.setForeground(new java.awt.Color(242, 242, 242));
         btnSaveReport.setText("Save Report");
-        btnSaveReport.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnSaveReport.setBorder(null);
         btnSaveReport.setBorderPainted(false);
         btnSaveReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +115,7 @@ public class ViewReportForm extends javax.swing.JFrame {
         btnBack.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btnBack.setForeground(new java.awt.Color(242, 242, 242));
         btnBack.setText("Back");
-        btnBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -144,6 +152,17 @@ public class ViewReportForm extends javax.swing.JFrame {
 
     private void btnSaveReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveReportActionPerformed
         // TODO add your handling code here:
+        try {
+            java.io.FileWriter fw = new java.io.FileWriter("data/reports.txt", true);
+            fw.write("----- Saved Report -----\n");
+            fw.write(currentReport.printReport() + "\n\n");
+            fw.close();
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Report saved successfully!");
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error saving report.");
+        }
     }//GEN-LAST:event_btnSaveReportActionPerformed
 
     /**
@@ -170,6 +189,33 @@ public class ViewReportForm extends javax.swing.JFrame {
         /* Create and dibtnMainMenuform */
         java.awt.EventQueue.invokeLater(() -> new ViewReportForm().setVisible(true));
     }
+    
+    // Displays the report details in the text area and updates title
+    private void displayReportDetails() {
+    if (currentReport != null) {
+        txtReportSummary.setText(currentReport.printReport());
+        txtReportSummary.setCaretPosition(0);   // forces scroll to top
+        lblReportTitle.setText("Energy Report – " + currentReport.getApplianceName());
+       }
+    }
+
+    
+    private void loadChartImage() {
+    if (currentReport == null) return;
+
+    String name = currentReport.getApplianceName().toLowerCase();
+
+    String imagePath = "";
+
+    if (name.contains("laptop")) imagePath = "/power/wise/app/icons/chart_laptop.png";
+    else if (name.contains("heater")) imagePath = "/power/wise/app/icons/chart_heater.png";
+    else if (name.contains("fridge")) imagePath = "/power/wise/app/icons/chart_fridge.png";
+    else if (name.contains("tv")) imagePath = "/power/wise/app/icons/chart_tv.png";
+
+    javax.swing.ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource(imagePath));
+    chartPanelContainer.setIcon(icon);
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Icon1;
@@ -177,10 +223,10 @@ public class ViewReportForm extends javax.swing.JFrame {
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSaveReport;
+    private javax.swing.JLabel chartPanelContainer;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel headingLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblChartPlaceholder;
     private javax.swing.JLabel lblReportTitle;
     private javax.swing.JTextArea txtReportSummary;
     // End of variables declaration//GEN-END:variables

@@ -8,60 +8,55 @@ package Dependancy;
  *
  * @author apple
  */
-public class Appliance {
-    private String applianceName;
-    private double energyUsage;
-    private double wattage;
-    private double hours;
 
+public class Appliance {
+
+    // Fields
+    private String name;
+    private int wattage;
+    private int hoursPerDay;
+
+    // Empty constructor
     public Appliance() {
     }
 
-    public Appliance(String applianceName, double energyUsage, double wattage, double hours) {
-        this.applianceName = applianceName;
-        this.energyUsage = energyUsage;
+    // Full constructor
+    public Appliance(String name, int wattage, int hoursPerDay) {
+        this.name = name;
         this.wattage = wattage;
-        this.hours = hours;
+        this.hoursPerDay = hoursPerDay;
     }
 
-    public String getApplianceName() {
-        return applianceName;
+    //setters and getters
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public void setWattage(int wattage) {
+        this.wattage = wattage;
+    }
+    
+    public void setHoursPerDay(int hoursPerDay) {
+        this.hoursPerDay = hoursPerDay;
     }
 
-    public void setApplianceName(String applianceName) {
-        this.applianceName = applianceName;
+    public String getName() {
+        return name;
     }
-
-    public double getEnergyUsage() {
-        return energyUsage;
-    }
-
-    public void setEnergyUsage(double energyUsage) {
-        this.energyUsage = energyUsage;
-    }
-
-    public double getWattage() {
+    
+    public int getWattage() {
         return wattage;
     }
 
-    public void setWattage(double wattage) {
-        this.wattage = wattage;
-    }
-
-    public double getHours() {
-        return hours;
-    }
-
-    public void setHours(double hours) {
-        this.hours = hours;
+    public int getHoursPerDay() {
+        return hoursPerDay;
     }
     
-    public double claculateEnergyUsage(){
-        return energyUsage = wattage * hours ;
-    }
+
     
-    @Override
-    public String toString(){
-        return applianceName + " : energy usage is " + energyUsage;
+
+    // Returns appliance information as a single line of text
+    public String printDetails() {
+        return "Appliance: " + name + ", Wattage: " + wattage + ", Hours/Day: " + hoursPerDay;
     }
 }

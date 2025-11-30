@@ -1,0 +1,5 @@
+Laptop,65,5
+Heater,1200,3
+Fridge,150,24
+TV,200,4
+Washing Machine,500,2
