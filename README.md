@@ -1,2 +1,3 @@
-# PowerWise-Java-OOP-Project
-Java OOP project for SDG 7 – PowerWise: a smart energy tracking application (Team: Hamza, Odmaa, Brian)
+# PowerWise-Java-OOP-Project-Section 3
+This section contains the Reports Module of the PowerWise Java OOP project.
+Made by : Hamza
